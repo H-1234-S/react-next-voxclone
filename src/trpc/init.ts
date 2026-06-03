@@ -26,12 +26,12 @@ const sentryMiddleware = t.middleware(
   }),
 );
 
-// Base router and procedure helpers
+// 基础路由器和流程辅助工具
 export const createTRPCRouter = t.router;
 export const createCallerFactory = t.createCallerFactory;
 export const baseProcedure = t.procedure.use(sentryMiddleware);
 
-// Authenticated procedure - calls auth() only when needed
+// 身份验证程序 - 仅在需要时调用 auth()
 export const authProcedure = baseProcedure.use(async ({ next }) => {
   const { userId } = await auth();
 
@@ -44,7 +44,7 @@ export const authProcedure = baseProcedure.use(async ({ next }) => {
   });
 });
 
-// Organization procedure - requires userId and orgId
+// 组织程序 - 需要 userId 和 orgId
 export const orgProcedure = baseProcedure.use(async ({ next }) => {
   const { userId, orgId } = await auth();
 

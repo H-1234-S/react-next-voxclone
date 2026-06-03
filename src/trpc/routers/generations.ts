@@ -141,6 +141,8 @@ export const generationsRouter = createTRPCRouter({
         });
       }
 
+      // data是 web 标准的 ArrayBuffer 类型，需要转换为 Node.js 的 Buffer 类型
+      // uploadAudio 函数需要 Buffer 类型作为参数
       const buffer = Buffer.from(data);
       let generationId: string | null = null;
       let r2ObjectKey: string | null = null;

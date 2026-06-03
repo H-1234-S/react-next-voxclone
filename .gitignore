@@ -52,6 +52,7 @@ __pycache__/
 
 # 忽略特定的文件
 chatterbox_tts.py
+chatterbox_tts_explanation.md
 
 # Sentry Config File
 .env.sentry-build-plugin

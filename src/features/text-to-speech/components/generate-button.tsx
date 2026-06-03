@@ -16,6 +16,8 @@ export function GenerateButton({
   onSubmit: () => void;
   className?: string;
 }) {
+  // isSubmitting 能挡住当前页面上的重复点击
+  // 但不能防刷新、开多标签、网络重试、后端重复执行
   return (
     <Button
       size={size}

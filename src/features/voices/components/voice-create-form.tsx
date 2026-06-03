@@ -32,10 +32,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Field, FieldError } from "@/components/ui/field";
-import { 
-  Tabs, 
-  TabsList, 
-  TabsTrigger, 
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
   TabsContent
 } from "@/components/ui/tabs";
 import {
@@ -173,10 +173,10 @@ function FileDropzone({
         </p>
       </div>
 
-       <Button type="button" variant="outline" size="sm">
-          <FolderOpen className="size-3.5" />
-          Upload file
-        </Button>
+      <Button type="button" variant="outline" size="sm">
+        <FolderOpen className="size-3.5" />
+        Upload file
+      </Button>
     </div>
   )
 };
@@ -285,7 +285,7 @@ export function VoiceCreateForm({
         params.set("description", description);
       }
 
-      const response = 
+      const response =
         await fetch(`/api/voices/create?${params.toString()}`, {
           method: "POST",
           headers: { "Content-Type": file.type },
@@ -314,23 +314,23 @@ export function VoiceCreateForm({
     },
     onSubmit: async ({ value }) => {
       try {
-         await createMutation.mutateAsync({
+        await createMutation.mutateAsync({
           name: value.name,
           file: value.file!,
           category: value.category,
           language: value.language,
           description: value.description || undefined,
-         });
+        });
 
-         toast.success("Voice created successfully!");
-         queryClient.invalidateQueries({
+        toast.success("Voice created successfully!");
+        queryClient.invalidateQueries({
           queryKey: trpc.voices.getAll.queryKey(),
         });
         form.reset();
       } catch (error) {
         const message =
           error instanceof Error ? error.message : "Failed to create voice";
-        
+
         if (onError) {
           onError(message);
         } else {
@@ -347,7 +347,7 @@ export function VoiceCreateForm({
         form.handleSubmit();
       }}
       className={cn(
-        "flex flex-col", 
+        "flex flex-col",
         scrollable ? "min-h-0 flex-1" : "gap-6"
       )}
     >
@@ -391,7 +391,7 @@ export function VoiceCreateForm({
                     />
                   </TabsContent>
                 </Tabs>
-                {isInvalid 
+                {isInvalid
                   && <FieldError errors={field.state.meta.errors} />}
               </Field>
             );
@@ -433,7 +433,7 @@ export function VoiceCreateForm({
 
             return (
               <Field data-invalid={isInvalid}>
-<div className="relative flex items-center">
+                <div className="relative flex items-center">
                   <div className="pointer-events-none absolute left-0 flex h-full w-11 items-center justify-center">
                     <Layers className="size-4 text-muted-foreground" />
                   </div>
@@ -442,7 +442,7 @@ export function VoiceCreateForm({
                     onValueChange={field.handleChange}
                   >
                     <SelectTrigger className="w-full pl-10">
-                      <SelectValue 
+                      <SelectValue
                         placeholder="Select category..."
                       />
                     </SelectTrigger>
@@ -511,17 +511,17 @@ export function VoiceCreateForm({
           selector={(s) => ({
             isSubmitting: s.isSubmitting,
           })}
-      >
-        {({ isSubmitting }) => {
-          const submitButton = (
-            <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? "Creating..." : "Create Voice"}
-            </Button>
-          );
+        >
+          {({ isSubmitting }) => {
+            const submitButton = (
+              <Button type="submit" disabled={isSubmitting}>
+                {isSubmitting ? "Creating..." : "Create Voice"}
+              </Button>
+            );
 
-          return footer ? footer(submitButton) : submitButton;
-        }}
-      </form.Subscribe>
+            return footer ? footer(submitButton) : submitButton;
+          }}
+        </form.Subscribe>
       </div>
     </form>
   )

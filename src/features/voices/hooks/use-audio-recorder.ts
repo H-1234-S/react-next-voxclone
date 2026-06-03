@@ -145,6 +145,8 @@ export function useAudioRecorder() {
       if (!recorder) return;
 
       recorder.stopRecording(() => {
+        // 获取 Blob 对象
+        // Blob 代表的是一段二进制数据，可以是文本、音频、视频、图片等的二进制形式
         const blob = recorder.getBlob();
         setAudioBlob(blob);
         setIsRecording(false);

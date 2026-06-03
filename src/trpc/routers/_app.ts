@@ -7,5 +7,5 @@ export const appRouter = createTRPCRouter({
   generations: generationsRouter,
   billing: billingRouter,
 });
-// export type definition of API
+// 导出 API 的类型定义
 export type AppRouter = typeof appRouter;

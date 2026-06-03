@@ -31,7 +31,8 @@ function getUrl() {
   })();
   return `${base}/api/trpc`;
 }
-// TRPCReactProvider 组件是一个 React 组件，用于在应用程序中提供 TRPC 客户端和 React Query 客户端的上下文。它确保在服务器端和客户端都能正确地创建和使用这些客户端实例，以便在应用程序中进行数据获取和状态管理。
+// TRPCReactProvider 组件是一个 React 组件，用于在应用程序中提供 TRPC 客户端和 React Query 客户端的上下文
+// 它确保在服务器端和客户端都能正确地创建和使用这些客户端实例，以便在应用程序中进行数据获取和状态管理。
 export function TRPCReactProvider(
   props: Readonly<{
     children: React.ReactNode;
