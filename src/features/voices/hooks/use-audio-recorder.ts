@@ -20,7 +20,6 @@ export function useAudioRecorder() {
   // RecordRTC / 麦克风流 / 计时器
   const recorderRef = useRef<RecordRTCType | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
-  // ReturnType TS内置工具类型，作用获取函数的返回值类型
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   /** 波形画布挂载点，由使用方传入 */
@@ -154,8 +153,7 @@ export function useAudioRecorder() {
         onBlob?.(blob);
       });
     },
-    [cleanup],
-  );
+    [cleanup]);
 
   /** 取消或重录：不依赖 stop 回调，直接释放资源并清空状态 */
   const resetRecording = useCallback(() => {

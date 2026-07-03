@@ -78,6 +78,7 @@ export const generationsRouter = createTRPCRouter({
         });
       }
 
+      // 获取r2ObjectKey
       const voice = await prisma.voice.findUnique({
         where: {
           id: input.voiceId,
